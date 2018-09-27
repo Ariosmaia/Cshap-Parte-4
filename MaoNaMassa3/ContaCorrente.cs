@@ -12,9 +12,9 @@ namespace ByteBank
 
         public static int TotalDeContasCriadas { get; private set; }
 
-        public int Agencia { get; }
+        public int Agencia { get;}
         
-        public int Numero {get;}
+        public int Numero { get; }
 
         private double _saldo = 100;
 
@@ -35,16 +35,18 @@ namespace ByteBank
             }
         }
 
+
         public ContaCorrente(int agencia, int numero)
         {
+
             if (agencia <= 0)
             {
-                throw new ArgumentException("O argumento agencia deve ser maior que 0.", nameof(agencia));
+                throw new ArgumentException("O argumento agencia não pode ser menor que 0.", nameof(agencia));
             }
 
             if (numero <= 0)
             {
-                throw new ArgumentException("O argumento numero deve ser maior que 0.", nameof(numero));
+                throw new ArgumentException("O argumento numero não pode ser menor que 0.", nameof(numero));
             }
 
             Agencia = agencia;
@@ -54,6 +56,7 @@ namespace ByteBank
 
             TotalDeContasCriadas++;
         }
+
 
         public bool Sacar(double valor)
         {
@@ -70,6 +73,7 @@ namespace ByteBank
         {
             _saldo += valor;
         }
+
 
         public bool Transferir(double valor, ContaCorrente contaDestino)
         {
